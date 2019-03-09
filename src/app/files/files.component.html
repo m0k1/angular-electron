@@ -1,0 +1,10 @@
+<style>
+.selected {
+  background-color: #cdcdcd;
+}
+</style>
+<div (window:keydown)="onKeyDown($event)">click me<div>
+<button (click)="updateEntries()">List</button>
+<ul>
+  <li [ngClass]="{'selected': i == cursor}" *ngFor="let entry of (entries|async); let i = index" id="entry-{{i}}">{{i}}) <a (click)="changeDir(entry)">{{entry}}</a></li>
+</ul>
