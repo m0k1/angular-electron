@@ -81,6 +81,7 @@
     "zone.js": "0.8.29"
   },
   "dependencies": {
-    "pizzicato": "^0.6.4"
+    "pizzicato": "^0.6.4",
+    "rxjs-compat": "^6.4.0"
   }
 }

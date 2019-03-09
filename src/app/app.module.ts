@@ -21,6 +21,12 @@ import { HomeComponent } from './components/home/home.component';
 
 import { FilesComponent } from './files/files.component';
 
+import {AudioService} from './shared/services/audio.service';
+//import {ControlComponent} from './components/control/control.component';
+import {PlaylistService} from './shared/services/playlist.service';
+import {HttpClientService } from './shared/services/http-client.service';
+import {UserAlertService} from './shared/services/user-alert.service';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,7 +53,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [ElectronService,
+    AudioService,
+    HttpClient,
+    PlaylistService,
+    HttpClientService,
+    UserAlertService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

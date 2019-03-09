@@ -4,7 +4,9 @@ import { resolve } from 'path';
 import { of } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 
-import * as Pizzicato from 'pizzicato';
+import {AudioService} from '../shared/services/audio.service';
+
+
 //declare var Pizzicato: any;
 //import * as Howl from 'howler';
 declare var Howl: any;
@@ -21,13 +23,13 @@ const fs = require('fs');
 })
 export class FilesComponent implements OnInit {
   //private currentPath: string = process.cwd();
-  private currentPath: string = '/SAMPLES/dj';
+  private currentPath: string = '/SAMPLES/dj/set1';
   private entries: any;
   private cursor = 0;
   private selected = 0;
   track = null;
 
-  constructor(private chRef: ChangeDetectorRef) {
+  constructor(private chRef: ChangeDetectorRef, private _audioService: AudioService) {
     this.updateEntries();
   }
 
@@ -106,8 +108,7 @@ export class FilesComponent implements OnInit {
     // TODO: Implement file opening
     console.log("Opening file: ", path);
 
-    var sound0 = new Pizzicato.Sound("file://"+path);
-    sound0.play();
+    this._audioService.playPath("file://"+path);
 
     
     /*
