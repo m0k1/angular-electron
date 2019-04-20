@@ -5,6 +5,8 @@ import { of } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 
 import {AudioService} from '../shared/services/audio.service';
+import {ControlService} from '../shared/services/control.service';
+
 
 
 //declare var Pizzicato: any;
@@ -29,8 +31,17 @@ export class FilesComponent implements OnInit {
   private selected = 0;
   track = null;
 
-  constructor(private chRef: ChangeDetectorRef, private _audioService: AudioService) {
+  constructor(private chRef: ChangeDetectorRef,
+    private _audioService: AudioService,
+    public _pad: ControlService
+    ) {
     this.updateEntries();
+    _pad.init();
+
+    this._pad.configObservable.subscribe(value => {
+      if(value==12) this.goUp();
+      if(value==13) this.goDown();
+    })
   }
 
   ngOnInit() {
