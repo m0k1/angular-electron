@@ -27,6 +27,8 @@ import {PlaylistService} from './shared/services/playlist.service';
 import {HttpClientService } from './shared/services/http-client.service';
 import {UserAlertService} from './shared/services/user-alert.service';
 
+//Import joymap component;
+import createJoyMap, { createQueryModule } from 'joymap';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
